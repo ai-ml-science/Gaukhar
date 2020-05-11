@@ -1,0 +1,340 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled5.ipynb",
+      "provenance": [],
+      "authorship_tag": "ABX9TyPwShPKErmciwkmcsT8EI4C",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Gaukhar-ai/Gaukhar/blob/master/Load%20the%20datasource%20into%20a%20DataFrame%2C%20run%20df.info()%2C%20df.head()\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ta7MRM9RPWuZ",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "import pandas as pd\n",
+        "df = pd.read_csv('https://tf-assets-prod.s3.amazonaws.com/tf-curric/data-analytics-bootcamp/nyc_baby_names.csv')"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "GslbnOtYVgSq",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 363
+        },
+        "outputId": "1ee1373e-497a-4f27-f0dd-ee0f1d84a589"
+      },
+      "source": [
+        "df.info()"
+      ],
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "<class 'pandas.core.frame.DataFrame'>\n",
+            "RangeIndex: 11345 entries, 0 to 11344\n",
+            "Data columns (total 12 columns):\n",
+            " #   Column                Non-Null Count  Dtype  \n",
+            "---  ------                --------------  -----  \n",
+            " 0   Year of Birth         11345 non-null  int64  \n",
+            " 1   Gender                11345 non-null  object \n",
+            " 2   Ethnicity             11345 non-null  object \n",
+            " 3   Child's First Name    11345 non-null  object \n",
+            " 4   Count                 11345 non-null  int64  \n",
+            " 5   Rank                  11345 non-null  int64  \n",
+            " 6   Gender.1              11345 non-null  object \n",
+            " 7   Ethnicity.1           11345 non-null  object \n",
+            " 8   Child's First Name.1  11345 non-null  object \n",
+            " 9   Sub1                  11345 non-null  object \n",
+            " 10  Sub2                  11345 non-null  object \n",
+            " 11  Unnamed: 11           0 non-null      float64\n",
+            "dtypes: float64(1), int64(3), object(8)\n",
+            "memory usage: 1.0+ MB\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "QekdAWCnY5dF",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 90
+        },
+        "outputId": "0fedf74f-dde5-4a77-ccd2-4c1a6b238cd3"
+      },
+      "source": [
+        "df.columns"
+      ],
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Index(['Year of Birth', 'Gender', 'Ethnicity', 'Child's First Name', 'Count',\n",
+              "       'Rank', 'Gender.1', 'Ethnicity.1', 'Child's First Name.1', 'Sub1',\n",
+              "       'Sub2', 'Unnamed: 11'],\n",
+              "      dtype='object')"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 4
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "I6_bCvJBY73G",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 254
+        },
+        "outputId": "6922ebf8-0c69-41ef-f915-0ee64eb43693"
+      },
+      "source": [
+        "df.dtypes"
+      ],
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Year of Birth             int64\n",
+              "Gender                   object\n",
+              "Ethnicity                object\n",
+              "Child's First Name       object\n",
+              "Count                     int64\n",
+              "Rank                      int64\n",
+              "Gender.1                 object\n",
+              "Ethnicity.1              object\n",
+              "Child's First Name.1     object\n",
+              "Sub1                     object\n",
+              "Sub2                     object\n",
+              "Unnamed: 11             float64\n",
+              "dtype: object"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 5
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "0vfM_r8PZJr7",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "outputId": "21c9f3a6-0b8d-4a40-f083-b5718536ce9b"
+      },
+      "source": [
+        "df.shape"
+      ],
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(11345, 12)"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 6
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "TRgOmgQ8ZKmV",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 302
+        },
+        "outputId": "096cab5f-de58-434a-9f19-f239f670368d"
+      },
+      "source": [
+        "df.head()"
+      ],
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Year of Birth</th>\n",
+              "      <th>Gender</th>\n",
+              "      <th>Ethnicity</th>\n",
+              "      <th>Child's First Name</th>\n",
+              "      <th>Count</th>\n",
+              "      <th>Rank</th>\n",
+              "      <th>Gender.1</th>\n",
+              "      <th>Ethnicity.1</th>\n",
+              "      <th>Child's First Name.1</th>\n",
+              "      <th>Sub1</th>\n",
+              "      <th>Sub2</th>\n",
+              "      <th>Unnamed: 11</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>2011</td>\n",
+              "      <td>FEMALE</td>\n",
+              "      <td>ASIAN AND PACIFIC ISLANDER</td>\n",
+              "      <td>SOPHIA</td>\n",
+              "      <td>119</td>\n",
+              "      <td>1</td>\n",
+              "      <td>Female</td>\n",
+              "      <td>Asian And Pacific Islander</td>\n",
+              "      <td>Sophia</td>\n",
+              "      <td>Asian And Paci</td>\n",
+              "      <td>Asian And Pacific Islander</td>\n",
+              "      <td>NaN</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>2011</td>\n",
+              "      <td>FEMALE</td>\n",
+              "      <td>ASIAN AND PACIFIC ISLANDER</td>\n",
+              "      <td>CHLOE</td>\n",
+              "      <td>106</td>\n",
+              "      <td>2</td>\n",
+              "      <td>Female</td>\n",
+              "      <td>Asian And Pacific Islander</td>\n",
+              "      <td>Chloe</td>\n",
+              "      <td>Asian And Paci</td>\n",
+              "      <td>Asian And Pacific Islander</td>\n",
+              "      <td>NaN</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>2011</td>\n",
+              "      <td>FEMALE</td>\n",
+              "      <td>ASIAN AND PACIFIC ISLANDER</td>\n",
+              "      <td>EMILY</td>\n",
+              "      <td>93</td>\n",
+              "      <td>3</td>\n",
+              "      <td>Female</td>\n",
+              "      <td>Asian And Pacific Islander</td>\n",
+              "      <td>Emily</td>\n",
+              "      <td>Asian And Paci</td>\n",
+              "      <td>Asian And Pacific Islander</td>\n",
+              "      <td>NaN</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>2011</td>\n",
+              "      <td>FEMALE</td>\n",
+              "      <td>ASIAN AND PACIFIC ISLANDER</td>\n",
+              "      <td>OLIVIA</td>\n",
+              "      <td>89</td>\n",
+              "      <td>4</td>\n",
+              "      <td>Female</td>\n",
+              "      <td>Asian And Pacific Islander</td>\n",
+              "      <td>Olivia</td>\n",
+              "      <td>Asian And Paci</td>\n",
+              "      <td>Asian And Pacific Islander</td>\n",
+              "      <td>NaN</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>2011</td>\n",
+              "      <td>FEMALE</td>\n",
+              "      <td>ASIAN AND PACIFIC ISLANDER</td>\n",
+              "      <td>EMMA</td>\n",
+              "      <td>75</td>\n",
+              "      <td>5</td>\n",
+              "      <td>Female</td>\n",
+              "      <td>Asian And Pacific Islander</td>\n",
+              "      <td>Emma</td>\n",
+              "      <td>Asian And Paci</td>\n",
+              "      <td>Asian And Pacific Islander</td>\n",
+              "      <td>NaN</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   Year of Birth  Gender  ...                        Sub2 Unnamed: 11\n",
+              "0           2011  FEMALE  ...  Asian And Pacific Islander         NaN\n",
+              "1           2011  FEMALE  ...  Asian And Pacific Islander         NaN\n",
+              "2           2011  FEMALE  ...  Asian And Pacific Islander         NaN\n",
+              "3           2011  FEMALE  ...  Asian And Pacific Islander         NaN\n",
+              "4           2011  FEMALE  ...  Asian And Pacific Islander         NaN\n",
+              "\n",
+              "[5 rows x 12 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 7
+        }
+      ]
+    }
+  ]
+}
